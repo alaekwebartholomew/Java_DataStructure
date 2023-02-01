@@ -3,9 +3,9 @@ package singlyLinkedList;
 public class SinglyLinkedList<T> {
 
     private static class Node<T> {
-        private final Node<T> data;
+        private final T data;
         private Node<T> next;
-        public Node(Node<T> data, Node<T> next){
+        public Node(T data, Node<T> next){
             this.data = data;
             this.next = next;
         }
@@ -28,25 +28,27 @@ public class SinglyLinkedList<T> {
     }
 
     // This will return the first element in the linked list
-    public Node<T> first(){
+    public T first(){
         if(this.head == null)
             return null;
         return this.head.data;
     }
 
     // This will return the last element in the linked list
-    public Node<T> last(){
+    public T last(){
         if(this.head == null)
             return null;
         Node<T> itr = this.head;
-        while (itr != null){
+        while (true){
+            if(itr.next == null){
+                return itr.data;
+            }
             itr = itr.next;
         }
-        return itr.data;
     }
 
     // This will add element at the beginning of the linked list
-    public void addFirst(Node<T> data){
+    public void addFirst(T data){
         Node<T> new_node = new Node<>(data, null);
         if (this.head != null) {
             new_node.next = this.head;
@@ -56,7 +58,7 @@ public class SinglyLinkedList<T> {
     }
 
     // This will add element at the end of the linked list
-    public void addLast(Node<T> data){
+    public void addLast(T data){
         Node<T> new_node = new Node<>(data, null);
         if(this.head == null){
             this.head = new_node;
@@ -74,24 +76,24 @@ public class SinglyLinkedList<T> {
     }
 
     // This will remove and return the first element
-    public Node<T> removeFirst(){
+    public T removeFirst(){
         if(this.head == null)
             return null;
-        Node<T> data = this.head.data;
+        T data = this.head.data;
         this.head = this.head.next;
         this.size--;
         return data;
     }
 
     // This will remove and return the last element
-    public Node<T> removeLast(){
+    public T removeLast(){
         if(this.head == null)
             return null;
         Node<T> itr = this.head;
         while (true){
-            if(itr.next == null){
-                Node<T> data = itr;
-                itr = null;
+            if(itr.next.next == null){
+                T data = itr.next.data;
+                itr.next = null;
                 this.size--;
                 return data;
             }
@@ -100,7 +102,17 @@ public class SinglyLinkedList<T> {
     }
 
     public static void main(String[] arg){
-        SinglyLinkedList<String> sll = new SinglyLinkedList<>();
+        SinglyLinkedList<Integer> sll = new SinglyLinkedList<>();
+        sll.addFirst(74);
+        sll.addFirst(78);
+        sll.addLast(72);
+        sll.addLast(70);
+        System.out.println("First item: " + sll.first());
+        System.out.println("Last item: " + sll.last());
+        System.out.println("deleted First item: " + sll.removeFirst());
+        System.out.println("deleted Last item: " + sll.removeLast());
+        System.out.println("First item: " + sll.first());
+        System.out.println("Last item: " + sll.last());
         System.out.println(sll.isEmpty());
         System.out.println(sll.size());
     }
