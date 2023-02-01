@@ -109,12 +109,44 @@ public class DoublyLinkedList<E> {
         return e;
     }
 
+    // Print in forward direction
+    public void printForward(){
+        if(this.head == null){
+            System.out.println("Empty List");
+        } else {
+            String data = "";
+            Node<E> itr = this.head;
+            while (itr != null){
+                data = data + itr.e + "<->";
+                itr = itr.next;
+            }
+            System.out.println(data);
+        }
+    }
+
+    // Print in backward direction
+    public void printBackward(){
+        if(this.tail == null){
+            System.out.println("Empty list");
+        } else {
+            String data = "";
+            Node<E> itr = this.tail;
+            while (itr != null){
+                data += itr.e + "<->";
+                itr = itr.prev;
+            }
+            System.out.println(data);
+        }
+    }
+
     public static void main(String[] arg){
         DoublyLinkedList<String> dll = new DoublyLinkedList<>();
         dll.addFirst("coding");
         dll.addFirst("Reading");
         dll.addLast("Eating");
         dll.addLast("Swimming");
+        dll.printForward();
+        dll.printBackward();
         System.out.println("deleted First item: " + dll.removeFirst());
         System.out.println("deleted Last item: " + dll.removeLast());
         System.out.println("First item: " + dll.first());
