@@ -1,5 +1,7 @@
 package singlyLinkedList;
 
+import doublyLinkedList.DoublyLinkedList;
+
 public class SinglyLinkedList<T> {
 
     private static class Node<T> {
@@ -101,12 +103,28 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    // Print items
+    public void print(){
+        if(this.head == null){
+            System.out.println("Empty List");
+        } else {
+            String database = "";
+            Node<T> itr = this.head;
+            while (itr != null){
+                database += itr.data + "->";
+                itr = itr.next;
+            }
+            System.out.println(database);
+        }
+    }
+
     public static void main(String[] arg){
         SinglyLinkedList<Integer> sll = new SinglyLinkedList<>();
         sll.addFirst(74);
         sll.addFirst(78);
         sll.addLast(72);
         sll.addLast(70);
+        sll.print();
         System.out.println("First item: " + sll.first());
         System.out.println("Last item: " + sll.last());
         System.out.println("deleted First item: " + sll.removeFirst());
