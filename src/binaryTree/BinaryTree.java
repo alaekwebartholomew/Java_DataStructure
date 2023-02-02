@@ -91,7 +91,16 @@ public class BinaryTree implements TreeInterface{
 
     }
 
-    public static void main(String[] arg){
+    public static BinaryTree buildNode(int[] items){
+        BinaryTree root = new BinaryTree(items[0]);
+        for (int value: items)
+            root.addChild(value);
+        return root;
+    }
 
+    public static void main(String[] arg){
+        int[] scores = {84, 78, 71, 70, 88, 74, 72};
+        BinaryTree build = BinaryTree.buildNode(scores);
+        build.postOrderTraversal();
     }
 }
