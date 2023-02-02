@@ -1,11 +1,13 @@
 package binaryTree;
 
+import java.util.ArrayList;
+
 public interface TreeInterface {
 
     public void addChild(int e);
-    public int preOrderTraversal();
-    public int postOrderTraversal();
-    public int inOrderTraversal();
+    public ArrayList<Integer> preOrderTraversal();
+    public ArrayList<Integer> postOrderTraversal();
+    public ArrayList<Integer> inOrderTraversal();
     public int findMin();
     public int findMax();
     public boolean isInternal();

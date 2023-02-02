@@ -1,5 +1,7 @@
 package binaryTree;
 
+import java.util.ArrayList;
+
 public class BinaryTree implements TreeInterface{
     BinaryTree left;
     int e;
@@ -37,18 +39,25 @@ public class BinaryTree implements TreeInterface{
     }
 
     @Override
-    public int preOrderTraversal() {
-        return 0;
+    public ArrayList<Integer> preOrderTraversal() {
+        ArrayList<Integer> element = new ArrayList<>();
+        if(this.size == 0)
+            element.add(this.e);
+        if(this.left != null)
+            return this.left.preOrderTraversal();
+        if(this.right != null)
+            return this.right.preOrderTraversal();
+        return element;
     }
 
     @Override
-    public int postOrderTraversal() {
-        return 0;
+    public ArrayList<Integer> postOrderTraversal() {
+        return ;
     }
 
     @Override
-    public int inOrderTraversal() {
-        return 0;
+    public ArrayList<Integer> inOrderTraversal() {
+        return ;
     }
 
     @Override
