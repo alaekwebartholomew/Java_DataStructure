@@ -2,16 +2,16 @@ package binaryTree;
 
 public class BinaryTree{
 
-        static class Node {
-            int value;
-            Node left, right;
+    static class Node {
+        int value;
+        Node left, right;
 
-            public Node(int data) {
-                this.value = data;
-                this.left = null;
-                this.right = null;
-            }
+        public Node(int data) {
+            this.value = data;
+            this.left = null;
+            this.right = null;
         }
+    }
 
     public void addChild(Node node, int value) {
         if (value < node.value) {
