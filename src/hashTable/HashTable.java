@@ -1,14 +1,15 @@
 package hashTable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HashTable<K, V> {
     int capacity;
-    int[] dataBase;
 
     public HashTable(int capacity){
         this.capacity = capacity;
-        this.dataBase = new int[this.capacity];
     }
-    static int hashCode(String s) {
+    public int hashCode(String s) {
         int h=0;
         for (int i=0; i<s.length( ); i++) {
             h = (h << 5) | (h >>> 27);
@@ -17,7 +18,15 @@ public class HashTable<K, V> {
         return h;
     }
 
+    public HashTable<K, V> createTable(){
+        List<HashTable<K,V>> dataBase = new ArrayList<HashTable<K, V>>(this.capacity);
+        for (int i = 0; i < this.capacity; i++){
+
+        }
+        return table;
+    }
+
     public static void main(String[] args) {
-        System.out.println(HashTable.hashCode("Adfgh"));
+
     }
 }
