@@ -21,7 +21,7 @@ public class HashTable<K, V> {
     public HashTable<K, V> createTable(){
         List<HashTable<K,V>> dataBase = new ArrayList<HashTable<K, V>>(this.capacity);
         for (int i = 0; i < this.capacity; i++){
-
+            dataBase.add()
         }
         return table;
     }
