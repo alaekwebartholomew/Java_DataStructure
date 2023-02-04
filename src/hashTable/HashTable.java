@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HashTable<K, V> {
-    int capacity;
 
-    public HashTable(int capacity){
-        this.capacity = capacity;
+    private ArrayList<HashNode<K, V>> dataBase;
+    private final int capacity;
+    private int size;
+
+    public HashTable(){
+        dataBase = new ArrayList<>();
+        this.capacity = 15;
+        this.size = 0;
+
+        for (int i = 0; i <= this.capacity; i++)
+            dataBase.add(null);
     }
     public int hashCode(String s) {
         int h=0;
@@ -18,13 +26,9 @@ public class HashTable<K, V> {
         return h;
     }
 
-    public HashTable<K, V> createTable(){
-        List<HashTable<K,V>> dataBase = new ArrayList<HashTable<K, V>>(this.capacity);
-        for (int i = 0; i < this.capacity; i++){
-            dataBase.add()
-        }
-        return table;
-    }
+    public int size(){return this.size;}
+
+    public boolean isEmpty(){return this.size() == 0;}
 
     public static void main(String[] args) {
 
