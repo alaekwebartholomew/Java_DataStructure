@@ -82,12 +82,42 @@ public class HashTable<K, V> {
         return null;
     }
 
+    public V remove(K key) {
+        int index = this.getDataBseIndex(key);
+        int hashCode = this.hashCode(key);
+        // Get head of chain
+        HashNode<K, V> head = this.dataBase.get(index);
+
+        HashNode<K, V> prev = null;
+        while (head != null) {
+            if (head.key.equals(key) && hashCode == head.hashCode)
+                break;
+
+            prev = head;
+            head = head.next;
+        }
+
+        if (head == null)
+            return null;
+
+        size--;
+
+        if (prev != null)
+            prev.next = head.next;
+        else
+            this.dataBase.set(index, head.next);
+
+        return head.value;
+    }
+
     public static void main(String[] args) {
         HashTable<String, String> map = new HashTable<>();
         map.add("learn", "Coding");
+        map.add("read", "pdf");
         System.out.println(map.size());
         System.out.println(map.isEmpty());
+        map.remove("read");
         System.out.println(map.get("learn"));
-        System.out.println(map.get("Read"));
+        System.out.println(map.get("read"));
     }
 }
