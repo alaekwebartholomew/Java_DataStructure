@@ -1,7 +1,6 @@
 package hashTable;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class HashTable<K, V> {
@@ -34,8 +33,8 @@ public class HashTable<K, V> {
     public boolean isEmpty(){return this.size() == 0;}
 
     public void add(K key, V value){
-        int index = getDataBseIndex(key);
-        int hashCode = hashCode(key);
+        int index = this.getDataBseIndex(key);
+        int hashCode = this.hashCode(key);
         HashNode<K, V> head = dataBase.get(index);
 
         while (head != null) {
@@ -68,8 +67,27 @@ public class HashTable<K, V> {
         }
     }
 
+    public V get(K key) {
+        int index = this.getDataBseIndex(key);
+        int hashCode = this.hashCode(key);
+
+        HashNode<K, V> head = this.dataBase.get(index);
+
+        while (head != null) {
+            if (head.key.equals(key) && head.hashCode == hashCode)
+                return head.value;
+            head = head.next;
+        }
+
+        return null;
+    }
+
     public static void main(String[] args) {
         HashTable<String, String> map = new HashTable<>();
-        map.add("Learn", "Coding");
+        map.add("learn", "Coding");
+        System.out.println(map.size());
+        System.out.println(map.isEmpty());
+        System.out.println(map.get("learn"));
+        System.out.println(map.get("Read"));
     }
 }
